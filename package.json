@@ -1,0 +1,24 @@
+{
+  "name": "my_app_name",
+  "private": "true",
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.8",
+    "autoprefixer": "^10.4.21",
+    "path": "^0.12.7",
+    "prettier": "^3.5.3",
+    "rollup": "^4.41.1",
+    "sass-embedded": "^1.89.0",
+    "tailwindcss": "^4.1.8",
+    "vite": "^5.4.19",
+    "vite-plugin-rails": "^0.5.0",
+    "vite-plugin-ruby": "^5.1.1"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13"
+  }
+}
