@@ -6,12 +6,25 @@
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  
+
   <%= vite_stylesheet_tag "data-turbo-track": "reload" %>
   <%= vite_client_tag %>
   <%= vite_javascript_tag 'application', "data-turbo-track": "reload" %>
 </head>
-<body>
-<%= yield %>
+<body class="overflow-x-hidden">
+<div class="flex flex-col">
+  <%= render "shared/flash" if flash.present? %>
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
+  <main>    
+    <%= yield %>
+  </main>
+  <footer>
+    <div class="h-[500px]">
+      <%= render 'layouts/footer' %>
+    </div>
+  </footer>
+</div>
 </body>
 </html>
