@@ -3,12 +3,11 @@
 <head>
   <title>GrizzledBearTeam</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= vite_stylesheet_tag 'application.scss', "data-turbo-track": "reload" %>
+  
+  <%= vite_stylesheet_tag "data-turbo-track": "reload" %>
   <%= vite_client_tag %>
   <%= vite_javascript_tag 'application', "data-turbo-track": "reload" %>
 </head>
