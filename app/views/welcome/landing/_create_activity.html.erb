@@ -1,0 +1,29 @@
+<div class="flex flex-col gap-4 items-center justify-center">
+  <h3 class="text-4xl text-center font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl p-6">
+    <span class="block">
+        Создавай или
+        <span class="text-transparent bg-clip-text bg-gradient-to-tr to-cyan-500 from-blue-600">
+            загружай
+        </span>
+        тренировки
+    </span>
+  </h3>
+  <div class="flex flex-col gap-4 items-center mt-4 md:h-[600px]">
+    <div class="h-full">
+      <%= vite_image_tag 'images/phone_with_activity.png', alt: t('images.alt.phone_with_activity') %>
+    </div>
+    <div class="flex gap-2 md:hidden">
+      <div>
+        <%= vite_image_tag 'images/icons/apps/garmin.png', alt: t('images.alt.apps.garmin'), class: 'w-15 h-15' %>
+      </div>
+      <div>
+        <%= vite_image_tag 'images/icons/apps/apple.jpeg', alt: t('images.alt.apps.apple'), class: 'w-15 h-15' %>
+      </div>
+      <div>
+        <%= vite_image_tag 'images/icons/apps/adidas.jpeg', 
+          alt: t('images.alt.apps.adidas'), 
+          class: 'w-15 h-15 rounded-xl' %>
+      </div>
+    </div>
+  </div>
+</div>

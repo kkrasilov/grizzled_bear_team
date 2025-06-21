@@ -1,0 +1,45 @@
+<div class="flex flex-col items-center border-b-1 border-gray-300 pb-16">
+  <h3 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl p-6">
+    <span class="block">
+        Ближайшие события
+    </span>
+  </h3>
+  <div class="flex gap-8 m-6 flex-wrap">
+    <div class="flex flex-col items-center border border-gray-200 shadow-sm md:flex-row md:max-w-xl rounded-lg bg-gray-100">
+      <%= vite_image_tag 'images/competitions/mala-hit.jpg', 
+        alt: t('images.alt.competitions.mala_hit'),
+        class: 'object-cover w-full h-96  rounded-t-lg' %>
+      <div class="flex flex-col justify-between p-4 leading-normal bg-gray-100 ">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Мала-хит</h5>
+        <p class="mb-3 font-normal text-gray-700">
+          Технически сложная, но невероятно увлекательная гонка для профессионалов и любителей.
+        </p>
+        <p>27 июля 2025</p>
+      </div>
+    </div>
+    <div class="flex flex-col items-center border border-gray-200 shadow-sm md:flex-row md:max-w-xl rounded-lg bg-gray-100">
+      <%= vite_image_tag 'images/competitions/pedal_2.jpg',
+        alt: t('images.alt.competitions.pedal_2'),
+        class: 'object-cover w-full h-96  rounded-t-lg' %>
+      <div class="flex flex-col justify-between p-4 leading-normal bg-gray-100 ">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Крути педали 2 Этап</h5>
+        <p class="mb-3 font-normal text-gray-700">
+          Продолжение легендарной любительской серии гонок на Голом камне.
+        </p>
+        <p>3 августа 2025</p>
+      </div>
+    </div>
+    <div class="flex flex-col items-center border border-gray-200 shadow-sm md:flex-row md:max-w-xl rounded-lg bg-gray-100">
+      <%= vite_image_tag 'images/competitions/pedal_3.jpg',
+        alt: t('images.alt.competitions.pedal_3'),
+        class: 'object-cover w-full h-96  rounded-t-lg' %>
+      <div class="flex flex-col justify-between p-4 leading-normal bg-gray-100 ">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Крути педали 3 Этап</h5>
+        <p class="mb-3 font-normal text-gray-700">
+          Завершение гоночного сезона вместе с нами!
+        </p>
+        <p>28 сентября 2025</p>
+      </div>
+    </div>
+  </div>
+</div>
