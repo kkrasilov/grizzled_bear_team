@@ -6,4 +6,11 @@ module ApplicationHelper
     else name
     end
   end
+
+  def nav_link_to(name = nil, path = nil, **options, &block)
+    options[:class] ||= ''
+    active_class = current_page?(path) ? 'bg-gray-100' : ''
+    options[:class] += " #{active_class}"
+    link_to(name, path, **options, &block)
+  end
 end

@@ -40,9 +40,8 @@ ru:
     name: 'GRIZZLEDBEAR'
 
   links:
-    root: 'GRIZZLEDBEAR'
-    portfolio: 'Мое портфолио'
-    profile: 'Профиль'
+    root: 'Главная'
+    profile: 'Мой профиль'
     register: 'Зарегистрироваться'
     sign_in: 'Вход'
     forgot_password: 'Забыли пароль?'
@@ -61,12 +60,19 @@ ru:
     start: 'Начать использовать'
     join: 'Присоединиться'
     more_about_team: 'Узнать больше'
+    about_team: 'О команде'
+    activities: 'Моя лента'
+    statistics: 'Статистика'
+    competition: 'Соревнования'
+    rating: 'Рейтинг'
+    find_friends: 'Найти друзей'
     
   images:
     alt:
       phone_with_activity: 'Телефон с велотренировкой'
       phone_with_photo: 'Телефон с фотографией райдера'
       team: 'Команда Grizzledbear'
+      logo_mini: 'Логотип компании'
       competitions:
         mala_hit: 'Соревнования Мала-хит'
         pedal_2: 'Соревнования Крути педали 2 этап'
