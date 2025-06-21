@@ -1,0 +1,42 @@
+<div class="bg-slate-300">
+  <div class="bg-cover bg-left lg:bg-left z-0 w-screen h-screen"
+       style="background-image: url('<%= vite_asset_path('images/background/team.JPEG') %>')">
+    <div class="flex h-2/4">
+      <div class="hidden lg:block lg:w-1/5"></div>
+      <div class="hidden lg:block lg:w-1/5"></div>
+      <div class="hidden lg:block lg:w-1/5"></div>
+      <div class="w-full lg:w-1/5 flex items-center justify-start lg:justify-center pl-6 sm:pl-10 text-white">
+        <div class="flex flex-col text-left">
+          <div class="text-logo text-[80px] sm:text-[80px] md:text-[100px] lg:text-[180px]">
+            GRIZZLEDBEAR
+          </div>
+          <div class="text-xl">
+            Культовая команда MTB райдеров из Нижнего Тагила
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block lg:w-1/5"></div>
+    </div>
+  </div>
+ 
+  <div class="-mt-100 w-full flex flex-col md:justify-end z-10 px-2 lg:pl-20 lg:pr-20" data-controller="tabs">
+    <div class="flex gap-4 justify-start buttons text-white mb-10 text-4xl pl-6 md:pl-20">
+      <button
+        data-action="click->tabs#showTeam"
+        data-tabs-target="teamButton"
+        class="inline-block pb-2 border-b-4 border-teal-600 text-teal-600 hover:border-teal-600 cursor-pointer">
+        СОСТАВ
+      </button>
+      <button
+        data-action="click->tabs#showHistory"
+        data-tabs-target="historyButton"
+        class="inline-block pb-2 hover:text-teal-500 hover:border-teal-600 cursor-pointer">
+        ИСТОРИЯ
+      </button>
+    </div>
+    
+    <%= render 'articles/team/history' %>
+    <%= render 'articles/team/team' %>
+  </div>
+</div>
+
