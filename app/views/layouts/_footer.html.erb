@@ -1,0 +1,126 @@
+<footer class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div>
+        <div class="flex justify-center text-teal-600 sm:justify-start">
+          <%= vite_image_tag 'images/logo.png', alt: "Logo", class: 'w-[60%] h-auto' %>
+        </div>
+
+        <p class="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+          GrizzledBear — это команда, где сила приходит с каждой трассой. Присоединяйся к нам, если хочешь прокачивать
+          себя и катать на грани возможностей.
+        </p>
+
+        <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+          <li>
+            <%= link_to '#', class: 'hover:opacity-50 cursor-pointer' do %>
+              <%= vite_image_tag 'images/icons/social/instagram.svg', class: 'w-[30px] h-[30px]' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: 'hover:opacity-50 cursor-pointer' do %>
+              <%= vite_image_tag 'images/icons/social/telegram.svg', class: 'w-[30px] h-[30px]' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: 'hover:opacity-50 cursor-pointer' do %>
+              <%= vite_image_tag 'images/icons/social/vk.svg', class: 'w-[30px] h-[30px]' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: 'hover:opacity-50 cursor-pointer' do %>
+              <%= vite_image_tag 'images/icons/social/whatsapp.svg', class: 'w-[30px] h-[30px]' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#', class: 'hover:opacity-50 cursor-pointer' do %>
+              <%= vite_image_tag 'images/icons/social/you-tube.svg', class: 'w-[30px] h-[30px]' %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">О нас</p>
+
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <%= link_to t('links.about_team'),
+                about_team_path, class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+            <li>
+              <%= link_to t('links.media'),
+                '#', class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+            </li>
+            <li>
+              <%= link_to t('links.our_events'),
+                '#', class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Наши сервисы</p>
+
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <%= link_to t('links.activities'),
+                current_user.present? ? root_path : new_user_session_path,
+                class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+            <li>
+              <%= link_to t('links.statistics'),
+                current_user.present? ? '#' : new_user_session_path,
+                class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+            <li>
+              <%= link_to t('links.competition'),
+                current_user.present? ? '#' : new_user_session_path,
+                class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+            <li>
+              <%= link_to t('links.rating'),
+                current_user.present? ? '#' : new_user_session_path,
+                class: 'text-gray-700 transition hover:text-gray-700/75' %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Contact Us</p>
+
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end" href="#">
+                <span class="flex-1 text-gray-700">john@doe.com</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end" href="#">
+                <span class="flex-1 text-gray-700">0123456789</span>
+              </a>
+            </li>
+
+            <li class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end">
+              <address class="-mt-0.5 flex-1 text-gray-700 not-italic">
+                Нижний Тагил
+              </address>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-gray-100 pt-6">
+      <div class="text-center sm:flex sm:justify-between sm:text-left">
+        <p class="text-sm text-gray-500">
+          <span class="block sm:inline">Все права защищены.</span>
+        </p>
+        <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">&copy; 2025 GrizzledBear</p>
+      </div>
+    </div>
+  </div>
+</footer>
