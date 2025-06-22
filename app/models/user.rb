@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
+  has_many :activities, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   enum :gender, {
     male: 'male',
     female: 'female'

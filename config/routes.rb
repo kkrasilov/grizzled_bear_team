@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get '/guests', to: redirect('/guests.html')
   root 'activities#index'
   
-  resources :activities, only: %i[index create update destroy]
+  resources :activities, only: %i[index new create]
+  resources :comments, only: :create
   resources :welcome, controller: :welcome, only: :index
   resources :users, only: %i[index show edit update]
+  resources :likes, only: :create
   
   get 'about_team', to: 'articles#about_team', as: :about_team
 end

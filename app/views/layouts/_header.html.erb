@@ -75,7 +75,7 @@
               <% if current_user.avatar.attached? %>
                 <%= image_tag(current_user.avatar, class: 'h-8 w-8 rounded-full', alt: 'Аватарка') %>
               <% else %>
-                <%= vite_image_tag 'images/default_avatar.png', alt: "Аватарка", class: "h-8 w-8 rounded-full" %>
+                <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-8 w-8 rounded-full" %>
               <% end %>
             </button>
             <div
@@ -129,7 +129,7 @@
           <% if current_user.avatar.attached? %>
             <%= image_tag(current_user.avatar, class: 'h-10 w-10 rounded-full', alt: 'Аватарка') %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.png', alt: "Аватарка", class: "h-10 w-10 rounded-full" %>
+            <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-10 w-10 rounded-full" %>
           <% end %>
           <div class="ml-3">
             <div class="text-base font-medium text-gray-800"><%= current_user.short_name %></div>
@@ -141,7 +141,7 @@
             users_path, 
             class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
           <%= link_to t('links.profile'),
-            '#', class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
+            user_path(current_user), class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
           <%= link_to t('links.log_out'),
             destroy_user_session_path,
             method: :delete,

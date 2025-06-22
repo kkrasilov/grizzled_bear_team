@@ -1,0 +1,48 @@
+<div class="shadow-xl text-gray-900 border-b border-gray-100 mt-16 bg-white w-[400px] mx-auto">
+  <div class="flex flex-col items-center gap-2 w-[400px]">
+    <div class="h-32 overflow-hidden">
+      <img class="object-cover object-top w-full" src='https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Mountain'>
+    </div>
+    <div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag(current_user.avatar, class: 'object-cover object-center h-32', alt: 'Аватарка') %>
+      <% else %>
+        <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "object-cover object-center h-32" %>
+      <% end %>
+    </div>
+    <div class="text-center mt-2">
+      <h2 class="font-semibold text-gray-700"><%= current_user.short_name %></h2>
+    </div>
+    <div class="flex items-center gap-6 justify-center border-t-1 border-gray-300 w-7/8 mt-4 pt-4">
+      <div class="text-center">
+        <span class="text-md block text-gray-700">Подписки</span>
+        <span class="text-xl block text-gray-600">0</span>
+      </div>
+      <div class="text-center">
+        <span class="text-md block text-gray-700">Подписчики</span>
+        <span class="text-xl block text-gray-600">0</span>
+      </div>
+      <div class="text-center">
+        <span class="text-md block text-gray-700">Тренировки</span>
+        <span class="text-xl block text-gray-600"><%= current_user.activities.count %></span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-start p-4 w-[400px]">
+    <div class="h-[100px] text-sm border-b-1 border-t-1 border-gray-300 w-full pt-3">
+      <span>Последняя тренировка</span>
+      <% if current_user.activities.present? %>
+        <div class="flex flex-col gap-2 m-3">
+          <div class="font-bold"><%= current_user.activities.last.title %></div>
+          <div><%= l(current_user.activities.last.start_time, format: :custom) %></div>
+        </div>
+      <% else %>
+        <div class="mt-3">
+          Самое время 
+          <%= link_to 'создать тренировку', new_activity_path, class: 'text-teal-700 hover:text-teal-800' %>
+           ;)
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

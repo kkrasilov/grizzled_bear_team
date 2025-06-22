@@ -1,6 +1,6 @@
 <div class="bg-cover bg-center lg:bg-left z-0 h-screen flex justify-center items-center"
      style="background-image: url('<%= vite_asset_path('images/background/profile.jpg') %>')">
-  <div class="w-full xl:w-5/12 2xl:w-4/12 lg:w-6/12 md:w-8/12 px-4 mx-auto pt-20">
+  <div class="w-full xl:w-5/12 2xl:w-4/12 lg:w-6/12 md:w-8/12 px-4 mx-auto pt-20 md:pt-0">
     <div class="flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl">
       <div class="px-6">
         <div class="flex flex-wrap justify-center">
@@ -9,29 +9,29 @@
               <% if @user.avatar.attached? %>
                 <%= image_tag(@user.avatar, class: 'rounded-full -mt-8 w-[230px] h-[230px] object-cover', alt: 'Аватарка') %>
               <% else %>
-                <%= vite_image_tag 'images/default_avatar.png', alt: "Аватарка", class: "rounded-full -mt-8 w-[230px] h-[230px] object-cover" %>
+                <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "rounded-full -mt-8 w-[230px] h-[230px] object-cover" %>
               <% end %>
             </div>
           </div>
           <div class="w-full px-4 text-center mt-20">
-            <div class="flex justify-center py-4 lg:pt-4 pt-8">
-              <div class="mr-4 p-3 text-center w-[200px]">
+            <div class="flex flex-col md:flex-row items-center justify-center py-4 border-t-1 border-b-1 border-gray-300">
+              <div class="p-3 text-center">
                 <span class="text-xl font-bold block tracking-wide text-gray-700">
-                  Активностей
+                  Подписки
                 </span>
-                <span class="text-sm text-gray-600">0</span>
+                <span class="text-xl text-gray-600">0</span>
               </div>
-              <div class="mr-4 p-3 text-center w-[200px]">
+              <div class="p-3 text-center">
                 <span class="text-xl font-bold block tracking-wide text-gray-700">
-                  Сорверований
+                  Подписчики
                 </span>
-                <span class="text-sm text-gray-600">0</span>
+                <span class="text-xl text-gray-600">0</span>
               </div>
-              <div class="lg:mr-4 p-3 text-center w-[200px]">
+              <div class="p-3 text-center">
                 <span class="text-xl font-bold block tracking-wide text-gray-700">
-                  Друзей
+                  Тренировки
                 </span>
-                <span class="text-sm text-gray-600">0</span>
+                <span class="text-xl text-gray-600"><%= @user.activities.count %></span>
               </div>
             </div>
           </div>
