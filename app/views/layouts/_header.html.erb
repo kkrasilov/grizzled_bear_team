@@ -81,7 +81,8 @@
             <div
               class="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg border border-gray-100 ring-1 ring-black ring-opacity-5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 origin-top-right">
               <%= link_to t('links.find_friends'),
-                '#', class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
+                users_path, 
+                class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
               <%= link_to t('links.profile'),
                 user_path(current_user), 
                 class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' %>
@@ -137,7 +138,8 @@
         </div>
         <div class="mt-3 space-y-1">
           <%= link_to t('links.find_friends'),
-            '#', class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
+            users_path, 
+            class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
           <%= link_to t('links.profile'),
             '#', class: 'block rounded-md py-2 px-3 text-base font-medium text-gray-900 hover:bg-gray-100' %>
           <%= link_to t('links.log_out'),
