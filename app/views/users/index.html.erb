@@ -1,0 +1,22 @@
+<section class="bg-white border-b-1 border-gray-300 ">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+    <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-800">Наши пользователи</h2>
+    </div>
+    <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <% @users.each do |user| %>
+        <div class="text-center text-gray-500">
+          <% if user.avatar.attached? %>
+            <%= image_tag(current_user.avatar, class: 'mx-auto mb-4 w-36 h-36 rounded-full', alt: user.short_name) %>
+          <% else %>
+            <%= vite_image_tag 'images/default_avatar.png', alt: user.short_name, class: "mx-auto mb-4 w-36 h-36 rounded-full" %>
+          <% end %>
+          <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-700">
+            <%= link_to user.short_name, user_path(user)%>
+          </h3>
+          <p>Нижний Тагил</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
