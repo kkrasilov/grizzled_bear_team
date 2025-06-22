@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "../stylesheets/toast.css";
+
+@font-face {
+    font-family: 'LogoFont';
+    src: url('../assets/fonts/Gunsport-m2J0a.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+.text-logo {
+    font-family: 'LogoFont', sans-serif;
+}

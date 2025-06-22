@@ -1,0 +1,22 @@
+<div class="relative bg-white py-16 px-4">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative">
+    <div class="bg-gray-200 p-8 rounded-2xl shadow-lg z-10 md:-mr-14 md:w-1/2">
+      <h2 class="text-3xl font-bold mb-4">О команде</h2>
+      <p class="text-gray-600 mb-4">
+        Grizzledbear- это мультиспортивная команда единомышленников из Нижнего Тагила,
+        которая была основана в 2014 году. Здесь собирались спортсмены любители для совместных тренировок и
+        выступлений на различных стартах.
+      </p>
+      <%= link_to t('links.more_about_team'),
+        about_team_path,
+        class: 'inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition'
+      %>
+    </div>
+
+    <div class="md:w-3/4 mt-10 md:mt-0">
+      <%= vite_image_tag 'images/team/team.JPG', 
+        alt: t('images.alt.team'),
+        class: 'rounded-lg shadow-md w-full h-auto object-cover' %>
+    </div>
+  </div>
+</div>

@@ -12,13 +12,15 @@
     "prettier": "^3.5.3",
     "rollup": "^4.41.1",
     "sass-embedded": "^1.89.0",
-    "tailwindcss": "^4.1.8",
+    "tailwindcss": "^4.1.10",
     "vite": "^5.4.19",
     "vite-plugin-rails": "^0.5.0",
     "vite-plugin-ruby": "^5.1.1"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.13"
+    "@hotwired/turbo-rails": "^8.0.13",
+    "@tailwindcss/postcss": "^4.1.10",
+    "postcss": "^8.5.5"
   }
 }

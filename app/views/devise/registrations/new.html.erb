@@ -1,0 +1,53 @@
+<div class="bg-cover bg-center lg:bg-left z-0 w-screen h-screen"
+     style="background-image: url('<%= vite_asset_path('images/background/registration.jpg') %>')">
+  <div class="flex flex-col items-center h-full justify-center">
+    <div class="flex flex-col items-center shadow-lg w-7/8 sm:w-4/8 lg:w-3/8 2xl:w-2/8 bg-white/85 p-10 ">
+      <div class="flex flex-col">
+        <h1 class="text-4xl text-center font-thin">Регистрация</h1>
+        <div class="flex mt-6 pt-6 border-t border-gray-300">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render partial: 'shared/form_errors', locals: { model: @user } %>
+            <div class="mb-5">
+              <%= f.label :email, class: 'text-sm/6 font-medium text-gray-900' %>
+              <div class="mt-2">
+                <%= f.email_field :email, autocomplete: "email",
+                  class: 'block w-full bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-700 sm:text-sm/6' %>
+              </div>
+            </div>
+            <div class="mb-5">
+              <%= f.label :first_name, class: 'text-sm/6 font-medium text-gray-900' %>
+              <div class="mt-2">
+                <%= f.text_field :first_name,
+                  class: 'block w-full bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-700 sm:text-sm/6' %>
+              </div>
+            </div>
+            <div class="mb-5">
+              <%= f.label :surname, class: 'text-sm/6 font-medium text-gray-900' %>
+              <div class="mt-2">
+                <%= f.text_field :surname,
+                  class: 'block w-full bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-700 sm:text-sm/6' %>
+              </div>
+            </div>
+            <div class="mb-5">
+              <%= f.label :password, class: 'text-sm/6 font-medium text-gray-900' %>
+              <div class="mt-2">
+                <%= f.password_field :password, autocomplete: "current-password",
+                  class: 'block w-full bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-700 sm:text-sm/6' %>
+              </div>
+            </div>
+            <div class="mb-5">
+              <%= f.label :password_confirmation, class: 'text-sm/6 font-medium text-gray-900' %>
+              <div class="mt-2">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                  class: 'block w-full bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-700 sm:text-sm/6' %>
+              </div>
+            </div>
+            <%= f.submit 'Зарегистрироваться',
+              class: 'bg-blue-500 hover:bg-blue-700 text-white text-sm font-semibold py-3 px-4 rounded-sm cursor-pointer' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,2 +1,2 @@
 import "../javascript/application";
-import './application.scss'
+import './application.css'

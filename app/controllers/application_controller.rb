@@ -1,4 +1,28 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :assert_path_allowed
+  
+  private
+
+  def assert_path_allowed
+    redirect_to guests_path unless token.present?
+  end
+
+  def token
+    cookies[:jwt_token].presence || (token_verification && fetch_token[:value])
+  end
+
+  def token_verification
+    JWT.decode(params[:token], ENV.fetch('JWT_SECRET', nil))
+  rescue StandardError
+    false
+  end
+
+  def fetch_token
+    cookies[:jwt_token] = { value: params[:token], expires: 3.months.from_now }
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email first_name surname])
+  end
 end

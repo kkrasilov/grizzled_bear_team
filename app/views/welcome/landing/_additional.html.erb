@@ -1,0 +1,31 @@
+<div class="relative bg-cover bg-center lg:bg-left z-0 w-screen md:h-[400px]"
+     style="background-image: url('<%= vite_asset_path('images/background/landing_additional.jpg') %>')">
+  <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+
+  <div class="relative z-20 flex flex-col items-center justify-center gap-8">
+    <h4 class="text-2xl font-bold tracking-tight text-white text-center sm:text-5xl md:text-6xl p-6">
+      <span class="block">Так же у нас есть</span>
+    </h4>
+    <div class="flex flex-col md:flex-row gap-12 md:gap-64 text-white justify-center info">
+      <div class="flex flex-col gap-2">
+        <div class="font-bold">Личная статистика</div>
+        <div>
+          <%= vite_image_tag 'images/icons/analysis.png',
+            alt: t('images.alt.icons.analysis'),
+            class: 'invert w-30 h-30' %>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="font-bold">Рейтинг участников</div>
+        <div>
+          <%= vite_image_tag 'images/icons/rating.png',
+            alt: t('images.alt.icons.rating'),
+            class: 'invert w-30 h-30' %>
+        </div>
+      </div>
+    </div>
+    <div class="text-white pb-10">
+      И возможность попасть в лучшую команду 💪
+    </div>
+  </div>
+</div>

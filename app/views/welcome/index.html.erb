@@ -1,3 +1,19 @@
-<div class="flex flex-col justify-center items-center w-screen h-screen bg-gradient-to-r from-cyan-300 to-cyan-600 gap-2">
-  <%= vite_image_tag 'images/logo.png', alt: "Logo", class: "w-36 h-auto" %>
+<div class="flex flex-col gap-12">
+  <section>
+    <%= render 'welcome/landing/header' %>
+  </section>
+  <section class="grid grid-cols-1 lg:grid-cols-3 gap-4 ml-6 mr-6">
+    <%= render 'welcome/landing/create_activity' %>
+    <%= render 'welcome/landing/shared_activity' %>
+    <%= render 'welcome/landing/planning_competition' %>
+  </section>
+  <section>
+    <%= render 'welcome/landing/additional' %>
+  </section>
+  <section>
+    <%= render 'welcome/landing/about_team' %>
+  </section>
+  <section>
+    <%= render 'welcome/landing/competitions' %>
+  </section>
 </div>
