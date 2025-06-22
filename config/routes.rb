@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   resources :activities, only: %i[index create update destroy]
   resources :welcome, controller: :welcome, only: :index
+  resources :users, only: %i[show edit update]
   
   get 'about_team', to: 'articles#about_team', as: :about_team
 end
