@@ -1,24 +1,53 @@
-# README
+## StudyBuddy
+____
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GrizzledBear – платформа для создания активностей, участия в соревнованиях и просмотра рейтинга. 
+## Стек технологий
+- Ruby: 3.2.2
+- Rails: 7.0
+- JS Bundler: Vite
 
-Things you may want to cover:
+## Установка и настройка  
 
-* Ruby version
+Предварительные требования
 
-* System dependencies
+- Ruby 3.2.2
+- Rails 7.0
+- Node.js и npm (для Vite)
+- PostgreSQL (или другой поддерживаемый реляционный СУБД)
 
-* Configuration
+## Шаги установки
+Клонируйте репозиторий:
 
-* Database creation
+```
+git@github.com:kkrasilov/study_buddy.git
+cd study_buddy
+```
 
-* Database initialization
+Установите зависимости:
 
-* How to run the test suite
+```
+bundle install
+npm install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Настройте базу данных:
 
-* Deployment instructions
+Создайте файл config/database.yml на основе config/database.yml.example и внесите необходимые изменения для вашей среды. Затем выполните миграции:
 
-* ...
+```
+rails db:create
+rails db:migrate
+```
+
+Запустите сервер разработки:
+
+```
+rails server
+```
+В отдельном терминале запустите Vite:
+
+```
+bin/vite dev
+```
+Приложение должно быть доступно по адресу http://localhost:3000.
