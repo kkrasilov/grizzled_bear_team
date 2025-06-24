@@ -5,9 +5,9 @@
         <% activity.likes.each.with_index do |like, index| %>
           <% offset_class = index.zero? ? 'ml-0' : '-ml-3' %>
           <% if like.user.avatar.attached? %>
-            <%= image_tag(like.user.avatar, class: "h-8 rounded-full border-2 border-white #{offset_class}", alt: 'Аватарка') %>
+            <%= image_tag(like.user.avatar, class: "h-8 w-8 rounded-full border-2 border-white #{offset_class} object-cover object-center", alt: 'Аватарка') %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-8 rounded-full border-2 border-white #{offset_class}" %>
+            <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-8 w-8 rounded-full border-2 border-white #{offset_class} object-cover object-center" %>
           <% end %>
         <% end %>
         <span class="ml-2 text-gray-600"><%= t('likes', count: activity.likes_count) %></span>

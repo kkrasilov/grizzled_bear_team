@@ -4,9 +4,9 @@
       <div class="flex flex-col gap-4">
         <div>
           <% if activity.user.avatar.attached? %>
-            <%= image_tag activity.user.avatar, class: "h-12 sm:h16 rounded-full", alt: 'Аватарка' %>
+            <%= image_tag activity.user.avatar, class: "h-12 sm:h-16 w-12 sm:w-16 rounded-full object-cover object-center", alt: 'Аватарка' %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.jpg', alt: "#{activity.user.short_name} аватар", class: "h-12 sm:h16 rounded-full" %>
+            <%= vite_image_tag 'images/default_avatar.jpg', alt: "#{activity.user.short_name} аватар", class: "h-12 sm:h-16 w-12 sm:w-16 rounded-full object-cover object-center" %>
           <% end %>
         </div>
         <div>

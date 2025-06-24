@@ -7,9 +7,9 @@
       <% @users.each do |user| %>
         <div class="text-center text-gray-500">
           <% if user.avatar.attached? %>
-            <%= image_tag(user.avatar, class: 'mx-auto mb-4 w-36 h-36 rounded-full', alt: user.short_name) %>
+            <%= image_tag(user.avatar, class: 'mx-auto mb-4 w-36 h-36 rounded-full object-cover', alt: user.short_name) %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.jpg', alt: user.short_name, class: "mx-auto mb-4 w-36 h-36 rounded-full" %>
+            <%= vite_image_tag 'images/default_avatar.jpg', alt: user.short_name, class: "mx-auto mb-4 w-36 h-36 rounded-full object-cover" %>
           <% end %>
           <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-700">
             <%= link_to user.short_name, user_path(user)%>
