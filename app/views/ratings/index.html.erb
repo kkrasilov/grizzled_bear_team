@@ -1,0 +1,182 @@
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Заголовок -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">Рейтинг участников</h1>
+      <p class="mt-2 text-sm text-gray-600">Сравните свои достижения с другими участниками команды</p>
+    </div>
+
+    <!-- Позиция текущего пользователя -->
+    <% if @current_user_position %>
+      <div class="mb-6 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-lg p-6 text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-teal-100">Ваша позиция в рейтинге</p>
+            <p class="mt-1 text-4xl font-bold"><%= @current_user_position %></p>
+          </div>
+          <div class="text-right">
+            <% current_user_entry = @leaderboard.find { |e| e[:is_current_user] } %>
+            <p class="text-sm text-teal-100">Очки</p>
+            <p class="text-3xl font-bold"><%= current_user_entry[:points] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Топ-3 участника -->
+    <div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <% @leaderboard.first(3).each_with_index do |entry, index| %>
+        <div class="bg-white rounded-lg shadow-md p-6 <%= 'ring-2 ring-yellow-400' if index == 0 %>">
+          <div class="text-center">
+            <div class="mb-4">
+              <% if index == 0 %>
+                <span class="text-6xl">🥇</span>
+              <% elsif index == 1 %>
+                <span class="text-6xl">🥈</span>
+              <% else %>
+                <span class="text-6xl">🥉</span>
+              <% end %>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-1">
+              <%= entry[:is_current_user] ? current_user.short_name : entry[:name] %>
+            </h3>
+            <p class="text-3xl font-bold text-teal-600 mb-4"><%= entry[:points] %> <span class="text-sm text-gray-500">очков</span></p>
+            <div class="space-y-2 text-sm text-gray-600">
+              <div class="flex justify-between">
+                <span>Дистанция:</span>
+                <span class="font-semibold"><%= entry[:total_distance] %> км</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Заездов:</span>
+                <span class="font-semibold"><%= entry[:total_rides] %></span>
+              </div>
+              <div class="flex justify-between">
+                <span>Ср. скорость:</span>
+                <span class="font-semibold"><%= entry[:avg_speed] %> км/ч</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Фильтры -->
+    <div class="mb-6 bg-white rounded-lg shadow p-4">
+      <div class="flex flex-wrap gap-2">
+        <%= link_to 'Все участники', ratings_path(filter: 'all'), 
+          class: "px-4 py-2 rounded-md text-sm font-medium #{@filter == 'all' ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}" %>
+        <%= link_to 'Этот месяц', ratings_path(filter: 'month'), 
+          class: "px-4 py-2 rounded-md text-sm font-medium #{@filter == 'month' ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}" %>
+        <%= link_to 'Эта неделя', ratings_path(filter: 'week'), 
+          class: "px-4 py-2 rounded-md text-sm font-medium #{@filter == 'week' ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}" %>
+      </div>
+    </div>
+
+    <!-- Общая таблица рейтинга -->
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Позиция
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Участник
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Очки
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Дистанция
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Заездов
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Ср. скорость
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Время
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% @leaderboard.each do |entry| %>
+              <tr class="<%= 'bg-teal-50' if entry[:is_current_user] %> hover:bg-gray-50 transition">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <% if entry[:position] <= 3 %>
+                      <span class="text-2xl mr-2">
+                        <%= entry[:position] == 1 ? '🥇' : entry[:position] == 2 ? '🥈' : '🥉' %>
+                      </span>
+                    <% end %>
+                    <span class="text-sm font-bold text-gray-900">#<%= entry[:position] %></span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <% if entry[:is_current_user] %>
+                        <% if current_user.avatar.attached? %>
+                          <%= image_tag(current_user.avatar, class: 'h-10 w-10 rounded-full', alt: 'Avatar') %>
+                        <% else %>
+                          <%= vite_image_tag 'images/default_avatar.jpg', alt: "Avatar", class: "h-10 w-10 rounded-full" %>
+                        <% end %>
+                      <% else %>
+                        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">
+                          <%= entry[:name].split(' ').map(&:first).join %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        <%= entry[:is_current_user] ? current_user.short_name : entry[:name] %>
+                        <% if entry[:is_current_user] %>
+                          <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                            Вы
+                          </span>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm font-bold text-teal-600"><%= entry[:points] %></div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900"><%= entry[:total_distance] %> км</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900"><%= entry[:total_rides] %></div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900"><%= entry[:avg_speed] %> км/ч</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900"><%= entry[:total_duration] %> ч</div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Информация о системе начисления очков -->
+    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-blue-900 mb-2 flex items-center">
+        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Как начисляются очки?
+      </h3>
+      <p class="text-sm text-blue-800">
+        Очки рейтинга рассчитываются по формуле: <strong>Дистанция × 2 + Количество заездов × 10</strong>
+      </p>
+      <p class="text-xs text-blue-700 mt-2">
+        Чем больше вы тренируетесь и чем больше дистанция, тем выше ваша позиция в рейтинге!
+      </p>
+    </div>
+  </div>
+</div>
