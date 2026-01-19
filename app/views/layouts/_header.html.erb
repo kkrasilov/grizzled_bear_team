@@ -11,11 +11,11 @@
             <%= nav_link_to t('links.activities'),
               root_path, class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
             <%= nav_link_to t('links.statistics'),
-              '#', class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
+              statistics_path, class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
             <%= nav_link_to t('links.competition'),
               '#', class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
             <%= nav_link_to t('links.rating'),
-              '#', class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
+              ratings_path, class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
             <%= nav_link_to t('links.about_team'),
               about_team_path, class: 'hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-900' %>
           <% else %>
@@ -62,13 +62,98 @@
       
       <% if current_user.present? %>
         <div class="hidden lg:flex items-center lg:ml-4">
-          <button class="p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2">
-            <span class="sr-only">Уведомления</span>
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a3 3 0 11-5.714 0"/>
-            </svg>
-          </button>
+          <div class="relative group">
+            <button class="p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 relative">
+              <span class="sr-only">Уведомления</span>
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a3 3 0 11-5.714 0"/>
+              </svg>
+              <!-- Badge с количеством уведомлений -->
+              <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+            </button>
+            <!-- Выпадающее меню уведомлений -->
+            <div class="absolute right-0 z-10 mt-2 w-80 rounded-md bg-white shadow-lg border border-gray-100 ring-1 ring-black ring-opacity-5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-150 origin-top-right pointer-events-none group-hover:pointer-events-auto">
+              <div class="p-4 border-b border-gray-200">
+                <h3 class="text-sm font-semibold text-gray-900">Уведомления</h3>
+              </div>
+              <div class="max-h-96 overflow-y-auto">
+                <!-- Уведомление о подписчике -->
+                <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <p class="text-sm text-gray-900"><span class="font-semibold">Смирнов Павел</span> подписался на вас</p>
+                      <p class="text-xs text-gray-500 mt-1">2 часа назад</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                      <span class="inline-block h-2 w-2 rounded-full bg-teal-500"></span>
+                    </div>
+                  </div>
+                </a>
+                <!-- Уведомление о лайке -->
+                <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-red-400 to-pink-600 flex items-center justify-center text-white">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <p class="text-sm text-gray-900"><span class="font-semibold">Силина Александра</span> оценила вашу тренировку</p>
+                      <p class="text-xs text-gray-500 mt-1">5 часов назад</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                      <span class="inline-block h-2 w-2 rounded-full bg-teal-500"></span>
+                    </div>
+                  </div>
+                </a>
+                <!-- Уведомление о подписчике -->
+                <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors bg-gray-50">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <p class="text-sm text-gray-900"><span class="font-semibold">Вавилин Никита</span> подписался на вас</p>
+                      <p class="text-xs text-gray-500 mt-1">1 день назад</p>
+                    </div>
+                  </div>
+                </a>
+                <!-- Уведомление о лайке -->
+                <a href="#" class="block px-4 py-3 hover:bg-gray-50 transition-colors bg-gray-50">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-red-400 to-pink-600 flex items-center justify-center text-white">
+                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                      <p class="text-sm text-gray-900"><span class="font-semibold">Красилова Юлия</span> оценила вашу тренировку</p>
+                      <p class="text-xs text-gray-500 mt-1">2 дня назад</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="p-3 border-t border-gray-200 text-center">
+                <a href="#" class="text-sm font-medium text-teal-600 hover:text-teal-700">Посмотреть все уведомления</a>
+              </div>
+            </div>
+          </div>
           <div class="ml-3 relative group">
             <button
               class="flex rounded-full bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2">
@@ -108,11 +193,11 @@
         <%= link_to t('links.activities'),
           root_path, class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
         <%= link_to t('links.statistics'),
-          '#', class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
+          statistics_path, class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
         <%= link_to t('links.competition'),
           '#', class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
         <%= link_to t('links.rating'),
-          '#', class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
+          ratings_path, class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
         <%= link_to t('links.about_team'),
           about_team_path, class: 'hover:bg-gray-100 block px-3 py-2 rounded-md font-medium text-gray-900' %>
       <% else %>

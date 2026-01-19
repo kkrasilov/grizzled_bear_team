@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :welcome, controller: :welcome, only: :index
   resources :users, only: %i[index show edit update]
   resources :likes, only: :create
+  resources :statistics, only: :index
+  resources :ratings, only: :index
   
   get 'about_team', to: 'articles#about_team', as: :about_team
 end
