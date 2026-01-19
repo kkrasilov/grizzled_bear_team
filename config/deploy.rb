@@ -9,7 +9,7 @@ set :domain, '176.124.208.47'
 set :user, 'deploy'
 set :deploy_to, '/var/www/grizzled_bear_team'
 set :repository, 'https://github.com/kkrasilov/grizzled_bear_team.git'
-set :branch, 'add-users'
+set :branch, 'add-activities'
 
 set :shared_dirs, fetch(:shared_dirs, []).push(
   'storage'

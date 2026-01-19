@@ -2,7 +2,7 @@ ru:
   date:
     formats:
       custom: "%-d %B %Y"
-    month_names: [~, "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+    month_names: [ ~, "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря" ]
   time:
     formats:
       custom: "%-d %B %Y, %H:%M"
@@ -10,6 +10,7 @@ ru:
   activerecord:
     models:
       user: 'Пользователь'
+      activity: 'Тренировка'
     
     attributes:
       user:
@@ -24,6 +25,23 @@ ru:
         genders:
           male: 'Мужской'
           female: 'Женский'
+      activity:
+        distance: 'Дистанция'
+        duration_hours: 'Продолжительность часы'
+        duration_minutes: 'Продолжительность минуты'
+        duration_seconds: 'Продолжительность секунды'
+        elevation: 'Высота'
+        category: 'Категория'
+        title: 'Название'
+        description: 'Описание'
+        start_time: 'Дата и время'
+        ride_type: 'Тип заезда'
+        ride_types:
+          activity: 'Тренировка'
+          competition: 'Соревнование'
+        categories:
+          cycling: 'Велозаезд'
+          virtual_cycling: 'Виртуальный велозаезд'
 
     errors:
       models:
@@ -68,7 +86,8 @@ ru:
     find_friends: 'Найти друзей'
     media: 'СМИ о нас'
     our_events: 'Наши мероприятия'
-    
+    create_activity: 'Создать тренировку'
+  
   images:
     alt:
       phone_with_activity: 'Телефон с велотренировкой'
@@ -116,7 +135,12 @@ ru:
     one: "%{count} ответ"
     few: "%{count} ответа"
     many: "%{count} ответов"
-
+  
+  likes:
+    one: "%{count} лайк"
+    few: "%{count} лайка"
+    many: "%{count} лайков"
+  
   messages:
     one: "Сообщение"
     few: "Сообщения"

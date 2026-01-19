@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "new_comment_#{activity.id}" do %>
+  <%= form_with(url: comments_path, method: :post, data: { turbo_frame: "new_comment", action: "turbo:submit-end->comment-form#hide" }) do |form| %>
+    <%= form.hidden_field :activity_id, value: activity.id %>
+    <div class="flex gap-2 items-center mx-2 mb-2">
+      <div class="border border-gray-200 w-2/3">
+        <%= form.text_area :body, rows: 3, class: 'focus:outline-teal-700 w-full'%>
+      </div>
+      <div class="cursor-pointer">
+        <%= form.submit "Отправить", class: 'text-sm font-semibold py-3 px-5 text-teal-700 cursor-pointer'%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

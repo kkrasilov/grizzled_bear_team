@@ -1,0 +1,33 @@
+<div id="likes_users_with_<%= activity.id %>" class="min-h-[100px] flex justify-between items-center px-4">
+  <div>
+    <% if activity.likes_count.positive?  %>
+      <div class="flex items-center">
+        <% activity.likes.each.with_index do |like, index| %>
+          <% offset_class = index.zero? ? 'ml-0' : '-ml-3' %>
+          <% if like.user.avatar.attached? %>
+            <%= image_tag(like.user.avatar, class: "h-8 w-8 rounded-full border-2 border-white #{offset_class} object-cover object-center", alt: 'Аватарка') %>
+          <% else %>
+            <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-8 w-8 rounded-full border-2 border-white #{offset_class} object-cover object-center" %>
+          <% end %>
+        <% end %>
+        <span class="ml-2 text-gray-600"><%= t('likes', count: activity.likes_count) %></span>
+      </div>
+    
+    <% end %>
+
+  </div>
+  <div class="flex items-center gap-2">
+    <%= button_to likes_path(activity_id: activity.id),
+      method: :post,
+      class: 'py-1 px-3 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer px-4' do %>
+      <%= vite_image_tag activity.likes.exists?(user: current_user) ? 'images/icons/heart_active.png' : 'images/icons/heart.png',
+        alt: "like", class: "h-5" %>
+    <% end %>
+    <%= button_tag type: "button",
+      class: "py-1 px-3 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer px-4",
+      data:  { action: "click->comment-form#toggle" } do %>
+      <%= vite_image_tag 'images/icons/comment.png', alt: "comment", class: "h-5" %>
+    <% end %>
+  </div>
+</div>
+
