@@ -3,5 +3,5 @@ yandex:
   access_key_id: <%= ENV["YNDX_ACCESS_KEY_ID"] %>
   secret_access_key: <%= ENV["YNDX_SECRET_ACCESS_KEY"] %>
   region: ru-central1
-  bucket: kkrasilov
+  bucket: grizzledbearteam
   endpoint: https://storage.yandexcloud.net
