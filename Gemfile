@@ -20,7 +20,7 @@ gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'vite_rails'
-
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'letter_opener'
