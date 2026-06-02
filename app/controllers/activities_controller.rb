@@ -25,6 +25,33 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def edit
+    @activity = Activity.find(params[:id])
+    authorize @activity
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    authorize @activity
+
+    if @activity.update(activity_params)
+      flash[:notice] = I18n.t('notice.updated')
+      redirect_to root_path
+    else
+      flash[:error] = @activity.errors.full_messages
+      render :edit
+    end
+  end
+
+  def destroy
+    @activity = Activity.find(params[:id])
+    authorize @activity
+
+    @activity.destroy
+    flash[:notice] = I18n.t('notice.deleted')
+    redirect_to root_path
+  end
+
   def like
     @activity = Activity.find(params[:id])
 
