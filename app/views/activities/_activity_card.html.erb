@@ -6,11 +6,11 @@
           <% if activity.user.avatar.attached? %>
             <%= image_tag activity.user.avatar, class: "h-12 sm:h-16 w-12 sm:w-16 rounded-full object-cover object-center", alt: 'Аватарка' %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.jpg', alt: "#{activity.user.short_name} аватар", class: "h-12 sm:h-16 w-12 sm:w-16 rounded-full object-cover object-center" %>
+            <%= cloud_image_tag 'default_avatar.jpg', alt: "#{activity.user.short_name} аватар", class: "h-12 sm:h-16 w-12 sm:w-16 rounded-full object-cover object-center" %>
           <% end %>
         </div>
         <div>
-          <%= vite_image_tag 'images/icons/bicycle.png', alt: "bike icon", class: "h-12" %>
+          <%= cloud_image_tag 'icons/bicycle.png', alt: "bike icon", class: "h-12" %>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
 
       <div class="flex items-center">
         <%= link_to root_path do %>
-          <%= vite_image_tag "images/logo_mini.png", class: 'w-[80px] h-[50px]', alt: t('images.alt.logo_mini') %>
+          <%= cloud_image_tag "logo_mini.png", class: 'w-[80px] h-[50px]', alt: t('images.alt.logo_mini') %>
         <% end %>
         <div class="hidden lg:ml-10 lg:flex space-x-4">
           <% if current_user.present? %>
@@ -75,7 +75,7 @@
               <% if current_user.avatar.attached? %>
                 <%= image_tag(current_user.avatar, class: 'h-8 w-8 rounded-full', alt: 'Аватарка') %>
               <% else %>
-                <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-8 w-8 rounded-full" %>
+                <%= cloud_image_tag 'default_avatar.jpg', alt: "Аватарка", class: "h-8 w-8 rounded-full" %>
               <% end %>
             </button>
             <div
@@ -129,7 +129,7 @@
           <% if current_user.avatar.attached? %>
             <%= image_tag(current_user.avatar, class: 'h-10 w-10 rounded-full', alt: 'Аватарка') %>
           <% else %>
-            <%= vite_image_tag 'images/default_avatar.jpg', alt: "Аватарка", class: "h-10 w-10 rounded-full" %>
+            <%= cloud_image_tag 'default_avatar.jpg', alt: "Аватарка", class: "h-10 w-10 rounded-full" %>
           <% end %>
           <div class="ml-3">
             <div class="text-base font-medium text-gray-800"><%= current_user.short_name %></div>

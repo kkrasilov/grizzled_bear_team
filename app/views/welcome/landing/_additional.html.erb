@@ -1,5 +1,5 @@
 <div class="relative bg-cover bg-center lg:bg-left z-0 w-screen md:h-[400px]"
-     style="background-image: url('<%= vite_asset_path('images/background/landing_additional.jpg') %>')">
+     style="background-image: url('<%= cloud_image_path('background/landing_additional.jpg') %>')">
   <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
 
   <div class="relative z-20 flex flex-col items-center justify-center gap-8">
@@ -10,7 +10,7 @@
       <div class="flex flex-col gap-2">
         <div class="font-bold">Личная статистика</div>
         <div>
-          <%= vite_image_tag 'images/icons/analysis.png',
+          <%= cloud_image_tag 'icons/analysis.png',
             alt: t('images.alt.icons.analysis'),
             class: 'invert w-30 h-30' %>
         </div>
@@ -18,7 +18,7 @@
       <div class="flex flex-col gap-2">
         <div class="font-bold">Рейтинг участников</div>
         <div>
-          <%= vite_image_tag 'images/icons/rating.png',
+          <%= cloud_image_tag 'icons/rating.png',
             alt: t('images.alt.icons.rating'),
             class: 'invert w-30 h-30' %>
         </div>

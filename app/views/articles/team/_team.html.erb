@@ -2,7 +2,7 @@
               grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:pl-20 lg:pr-20 mb-16">
   <% @team.each do |name, info| %>
     <div class="h-[550px] shadow-xl overflow-hidden relative">
-      <%= vite_image_tag info['photo_name'] || "images/team/#{name}.JPG", alt: name %>
+      <%= cloud_image_tag info['photo_name'] || "team/#{name}.JPG", alt: name %>
       
       <div class="absolute bottom-0 left-0 w-full p-4 text-white bg-black/30">
         <h3 class="text-3xl"><%= info['name'] %></h3>

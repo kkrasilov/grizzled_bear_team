@@ -3,7 +3,7 @@
    <% if comment.user.avatar.attached? %>
      <%= image_tag comment.user.avatar, class: "h-10 sm:h14 rounded-full", alt: 'Аватарка' %>
    <% else %>
-     <%= vite_image_tag 'images/default_avatar.jpg', alt: "#{comment.user.short_name} аватар", class: "h-10 sm:h14 rounded-full" %>
+     <%= cloud_image_tag 'default_avatar.jpg', alt: "#{comment.user.short_name} аватар", class: "h-10 sm:h14 rounded-full" %>
    <% end %>
  </div>
   <div class="flex flex-col w-full">
